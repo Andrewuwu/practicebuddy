@@ -1,0 +1,22 @@
+ <% @videos.each do |video| %>
+    <div class="card mb-3">
+      <div class="d-flex p-2">
+        <%=video_tag(url_for(video.clip),
+        style: "width:; height:250px", controls: '')%>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= video.title %></h5>
+        <p class="card-text">
+          <small class="text-muted"><%= video.description %></small>
+        </p>
+        <div class="row m-2">
+          <%= link_to 'Show', video_path(video), class:'btn btn-outline-primary btn-sm m-1'%>
+          <%= link_to 'Edit', edit_video_path(video), class:'btn btn-outline-primary btn-sm m-1'%>
+          <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-outline-primary btn-sm m-1'%>
+        </div>
+    </div>
+  </div>
+  <% end %>  
+
+  <%= link_to 'New Video', new_video_path, class:'btn btn-outline-primary'%>
+
