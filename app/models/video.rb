@@ -5,4 +5,5 @@ class Video < ApplicationRecord
     validates :description, presence: true
     validates :clip, presence: true
     validates :thumbnail, presence: true
+    belongs_to :user
 end

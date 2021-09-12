@@ -1,39 +1,44 @@
-<div class="container m-4 p-2">
-<%= form_with(model: video) do |form| %>
-  <% if video.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
+<div class="card">
+  <h1 class="card-title">New Video</h1>
+  <div class="container m-4 p-2">
+  <%= form_with(model: video) do |form| %>
+    <% if video.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
 
-      <ul>
-        <% video.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% video.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field p-2">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control"  %>
+    </div>
+
+    <div class="field p-2">
+      <%= form.label :description, class: "form-label"%>
+      <%= form.text_area :description, class: "form-control"%>
+    </div>
+
+    <div class="field p-2">
+      <%= form.label :clip%>
+      <%= form.file_field :clip%>
+    </div>
+
+    <div class="field p-2">
+      <%= form.label :thumbnail %>
+      <%= form.file_field :thumbnail%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class:'btn btn-outline-primary' %>
     </div>
   <% end %>
 
-  <div class="field p-2">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control"  %>
+  <%= link_to 'Back', videos_path %>
   </div>
-
-  <div class="field p-2">
-    <%= form.label :description, class: "form-label"%>
-    <%= form.text_area :description, class: "form-control"%>
-  </div>
-
-  <div class="field p-2">
-    <%= form.label :clip%>
-    <%= form.file_field :clip%>
-  </div>
-
-  <div class="field p-2">
-    <%= form.label :thumbnail %>
-    <%= form.file_field :thumbnail%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class:'btn btn-outline-primary' %>
-  </div>
-<% end %>
 </div>
